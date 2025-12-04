@@ -1,0 +1,22 @@
+import cors from "cors";
+import express from "express";
+// Import de la table de routage
+import router from "./router.js";
+import cookieParser from "cookie-parser";
+// Creation du serveur
+// Utilisation de la table de routage dans l’application
+const app = express();
+const corsOption = {
+    origin : "http://localhost:5173"
+}
+app.use(cors(corsOption));
+app.use(express.json());
+app.use(cookieParser());
+
+app.use("/api", router);
+
+//on redirige le / vers public
+app.use("/",express.static("public"))
+
+// Demarrage du serveur sur le port 3000
+app.listen(3000);
