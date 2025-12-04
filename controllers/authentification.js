@@ -22,12 +22,16 @@ export async function authentificationUser(req, resp) {
 }
 
 export async function authentificationUserByToken(req, resp) {
-    if (req.cookies.token == undefined){
+    let token = req.cookies.token
+    if (token == undefined && req.header("Authorization")){
+        token = req.header("Authorization").split(" ")[1];
+    } 
+    if (token == undefined) {
         resp.json({
             message:'Token invalide'
         })
     } else {
-        const tokenData = jwt.verify(req.cookies.token, 'voicimaclé');
+        const tokenData = jwt.verify(token, 'voicimaclé');
         const user = await userModel.getUser(tokenData.id);
         resp.json(user)
     }
