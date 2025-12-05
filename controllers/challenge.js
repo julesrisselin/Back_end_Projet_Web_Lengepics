@@ -22,7 +22,14 @@ export async function getCurrentChallenge(req, resp) {
 
 
 export async function subChallenge(req, resp) {
-    const data = await challengeModel.subChallenge(req.body.title_theme, req.body.description_theme, req.file, req.body.date_start, req.body.date_end)
+    if (req.file == undefined){
+        resp.json({
+            success: false,
+            message : "Mauvais format pour l'upload ", 
+        })
+    }
+    const filepath = req.file.path.substr(6);
+    const data = await challengeModel.subChallenge(req.body.title, req.body.description, filepath, req.body.date_start, req.body.date_end)
     resp.json({
         success: true,
         message : "Challenge ajouté ", 

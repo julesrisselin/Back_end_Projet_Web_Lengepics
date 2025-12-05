@@ -21,7 +21,7 @@ router.get("/users/:id", userController.getUserById);
 router.get("/challenges/current", challengeController.getCurrentChallenge);
 
 // Pour les participations
-router.post("/participations",authentificationController.authByToken, participationsController.subParticipations);
+router.post("/participations",authentificationController.authByToken, uploadController.upload.single('uploaded_file_participations'), participationsController.subParticipations);
 
 //faire if pour les requetes de user et date et id challenge
 router.get("/participations", participationsController.getParticipationByFilter);

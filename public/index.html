@@ -11,8 +11,19 @@
     <form action="/api/challenges" enctype="multipart/form-data" method="post">
         <div class="form-group">
             <input type="file" class="form-control-file" name="uploaded_file">
-            <input type="text" class="form-control" placeholder="Number of speakers" name="nspeakers">
-            <input type="submit" value="Get me the stats!" class="btn btn-default">
+            <input type="text" class="title" placeholder="Title" name="title">
+            <input type="text" class="description" placeholder="Description" name="description">
+            <input type="date" class="date_start" placeholder="Date début du challenge" name="date_start">
+            <input type="date" class="date_end" placeholder="Date début du challenge" name="date_end">
+            <input type="submit" value="Envoyer" class="btn btn-default">
+        </div>
+    </form>
+
+    <form action="/api/participations" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <input type="file" class="form-control-file" name="uploaded_file_participations">
+            <input type="text" class="id_participations" placeholder="id challenge" name="id_challenge">
+            <input type="submit" value="Envoyer" class="btn btn-default">
         </div>
     </form>
 </body>

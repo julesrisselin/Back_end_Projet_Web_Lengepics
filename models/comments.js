@@ -16,6 +16,6 @@ export async function moderateComments(id){
 }
 
 export async function subComments(id_participations ,user_id ,content){
-    const row = db.execute('INSERT INTO comments (id_participations, user_id  , content) VALUES (?, ? ,?)' ,[id_participations, user_id ,content]);
+    const row = db.execute('INSERT INTO comments (id_participations, user_id  , content) VALUES (?,?,?)' ,[id_participations, user_id ,content]);
     return row;
 }

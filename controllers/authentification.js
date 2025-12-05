@@ -1,6 +1,5 @@
 import * as userModel from "../models/user.js";
 import bcrypt from 'bcrypt';
-import cookieParser from "cookie-parser";
 import jwt from 'jsonwebtoken';
 
 export async function authentificationUser(req, resp) {

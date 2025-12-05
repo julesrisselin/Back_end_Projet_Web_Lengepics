@@ -11,6 +11,6 @@ export async function getVotesById(id) {
 }
 
 export async function subVotes(id_participations, user_id , note_creativity, note_on_theme, note_technique){
-    const row = db.execute('INSERT INTO votes (id_participations , user_id, note_creativity, note_on_theme, note_technique) VALUES (? ,? ,?, ?, ?)' ,[id_participations ,user_id ,note_creativity, note_on_theme, note_technique]);
+    const row = db.execute('INSERT INTO votes (id_participations , user_id, note_creativity, note_on_theme, note_technique) VALUES (?,?,?,?,?)' ,[id_participations ,user_id ,note_creativity, note_on_theme, note_technique]);
     return row;
 }

@@ -11,7 +11,7 @@ export async function updateInfos(email, name, firstname, user_id){
 }
 
 export async function createUser(email, password, name, firstname){
-    const row = db.execute('INSERT INTO users (email, password, name, firstname) VALUES (? ,?, ?, ?)' ,[email, password, name, firstname]);
+    const row = db.execute('INSERT INTO users (email, password, name, firstname) VALUES (?,?,?,?)' ,[email, password, name, firstname]);
     return row;
 }
 

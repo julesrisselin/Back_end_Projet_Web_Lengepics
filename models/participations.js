@@ -25,7 +25,7 @@ export async function getParticipationsByDate(date_submission) {
     return row;
 }
 
-export async function subParticipations(user_id, id_challenge ,picture_updated_url){
-    const row = db.execute('INSERT INTO participations (user_id ,id_challenge, picture_updated_url) VALUES (?,?)' ,[user_id, id_challenge ,picture_updated_url]);
+export async function subParticipations(user_id, id_challenge ,filepath){
+    const row = db.execute('INSERT INTO participations (user_id ,id_challenge, picture_updated_url) VALUES (?,?,?)' ,[user_id ,id_challenge ,filepath]);
     return row;
 }

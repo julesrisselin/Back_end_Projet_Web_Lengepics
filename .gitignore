@@ -146,3 +146,6 @@ Desktop.ini
 Thumbs.db
 .Spotlight-V100
 .Trashes
+
+#fichiers upload
+/public/upload
