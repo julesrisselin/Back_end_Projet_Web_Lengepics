@@ -12,7 +12,7 @@ export async function authentificationUser(req, resp) {
             message: "Email ou mot de passe incorrect"
         })
     } else {
-        const token = jwt.sign({ id: user.id }, 'voicimaclé');
+        const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
         resp.cookie('token', token, { maxAge: 1000 * 60 * 60 * 24 * 365, httpOnly: true });
         resp.json({
             message: 'Votre session a bien été créer',
@@ -31,7 +31,7 @@ export async function authByToken(req, resp, next) {
             message: 'Token manquant, invalide ou expiré'
         })
     } else {
-        const tokenData = jwt.verify(token, 'voicimaclé');
+        const tokenData = jwt.verify(token, process.env.SECRET_KEY);
         const user = await userModel.getUser(tokenData.id);
         if (user == undefined) {
             resp.status(401).json({

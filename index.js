@@ -18,4 +18,4 @@ app.use("/api", router);
 app.use("/",express.static("public"))
 
 // Demarrage du serveur sur le port 3000
-app.listen(3000);
+app.listen(process.env.DB_LISTEN);
