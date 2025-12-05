@@ -1,12 +1,12 @@
 import db from "../database.js";
 
-export async function delParticipations(Id) {
-    const row = db.delete('DELETE FROM participations WHERE id = ?', [Id])
+export async function delParticipations(id) {
+    const row = db.execute('UPDATE participations SET is_active = 0 WHERE id = ?', [id])
     return row;
 }
 
-export async function getParticipationById(Id) {
-    const row = db.getrow('SELECT * FROM participations WHERE id = ?', [Id])
+export async function getParticipationById(id) {
+    const row = db.getrow('SELECT * FROM participations WHERE id = ?', [id])
     return row;
 }
 
@@ -25,7 +25,7 @@ export async function getParticipationsByDate(date_submission) {
     return row;
 }
 
-export async function subParticipations(id_challenge ,picture_updated_url){
-    const row = db.execute('INSERT INTO participations (id_challenge, picture_updated_url) VALUES (?,?)' ,[id_challenge ,picture_updated_url]);
+export async function subParticipations(user_id, id_challenge ,picture_updated_url){
+    const row = db.execute('INSERT INTO participations (user_id ,id_challenge, picture_updated_url) VALUES (?,?)' ,[user_id, id_challenge ,picture_updated_url]);
     return row;
 }

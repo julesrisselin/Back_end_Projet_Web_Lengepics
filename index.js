@@ -12,7 +12,6 @@ const corsOption = {
 app.use(cors(corsOption));
 app.use(express.json());
 app.use(cookieParser());
-
 app.use("/api", router);
 
 //on redirige le / vers public

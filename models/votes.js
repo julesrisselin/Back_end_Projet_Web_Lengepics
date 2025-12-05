@@ -5,12 +5,12 @@ export async function getAllVotes() {
     return row;
 }
 
-export async function getVotesById(Id) {
-    const row = db.getrow('SELECT * FROM votes WHERE id = ?', [Id])
+export async function getVotesById(id) {
+    const row = db.getrow('SELECT * FROM votes WHERE id = ?', [id])
     return row;
 }
 
-export async function subVotes(id_participations , note_creativity, note_on_theme, note_technique){
-    const row = db.execute('INSERT INTO votes (id_participations ,note_creativity, note_on_theme, note_technique) VALUES (? ,?, ?, ?)' ,[id_participations ,note_creativity, note_on_theme, note_technique]);
+export async function subVotes(id_participations, user_id , note_creativity, note_on_theme, note_technique){
+    const row = db.execute('INSERT INTO votes (id_participations , user_id, note_creativity, note_on_theme, note_technique) VALUES (? ,? ,?, ?, ?)' ,[id_participations ,user_id ,note_creativity, note_on_theme, note_technique]);
     return row;
 }

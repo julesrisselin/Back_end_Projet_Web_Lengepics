@@ -27,8 +27,8 @@ export async function getCommentsById(req , resp) {
     }
 }
 
-export async function updateComments(req, resp) {
-    const data = await commentsModel.updateComments(req.body.content ,req.params.id)
+export async function moderateComments(req, resp) {
+    const data = await commentsModel.updateComments(req.params.id)
     resp.json({
         success: true,
         message: `Votre commentaire a bien été modifié.`
@@ -36,7 +36,7 @@ export async function updateComments(req, resp) {
 }
 
 export async function subComments(req , resp){
-    const data = await commentsModel.subComments(req.body.id_participations ,req.body.content)
+    const data = await commentsModel.subComments(req.body.id_participations, req.user.id ,req.body.content)
     resp.json ({
         success: true,
         message: `Votre commentaire a bien ajouté.`

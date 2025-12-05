@@ -11,35 +11,35 @@ const router = Router();
 router.post("/auth/login", authentificationController.authentificationUser);
 
 
-router.get("/user/me", authentificationController.authentificationUserByToken)
-router.post("/user", userController.createUser)
-router.put("/user/:id", userController.updateUserInfos);
-router.get("/user/:id", userController.getUserById);
+router.get("/users/me", authentificationController.authByToken, userController.getCurrent)
+router.post("/users", userController.createUser)
+router.put("/users/:id",authentificationController.authByToken, userController.updateUserInfos);
+router.get("/users/:id", userController.getUserById);
 
 //Pour le challenge en cours
-router.get("/challenge/current", challengeController.getCurrentChallenge);
+router.get("/challenges/current", challengeController.getCurrentChallenge);
 
 // Pour les participations
-router.post("/participations", participationsController.subParticipations);
+router.post("/participations",authentificationController.authByToken, participationsController.subParticipations);
 
 //faire if pour les requetes de user et date et id challenge
 router.get("/participations", participationsController.getParticipationByFilter);
 router.get("/participations/:id", participationsController.getParticipationById);
-router.delete("/participations/:id", participationsController.deleteParticipations);
+router.delete("/participations/:id",authentificationController.authByToken, authentificationController.authAdmin, participationsController.deleteParticipations);
 
 // Pour les commentaires
 
 router.get("/comments", commentsController.getAllComments);
-router.post("/comments", commentsController.subComments);
+router.post("/comments", authentificationController.authByToken, commentsController.subComments);
 router.get("/comments/:id", commentsController.getCommentsById);
-router.put("/comments/:id", commentsController.updateComments);
+router.put("/comments/:id", authentificationController.authByToken, authentificationController.authAdmin,commentsController.moderateComments);
 
 // Pour les votes
-router.post("/votes", votesController.subVotes);
+router.post("/votes",authentificationController.authByToken, votesController.subVotes);
 router.get("/votes", votesController.getAllVotes)
 router.get("/votes/:id", votesController.getVotesById)
  
 // Admin testé 
-router.post("/challenge", challengeController.subChallenge);
+router.post("/challenges",authentificationController.authByToken, authentificationController.authAdmin, challengeController.subChallenge);
 
 export default router;

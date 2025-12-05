@@ -22,7 +22,7 @@ export async function getVotesById(req, resp) {
 }
 
 export async function subVotes(req, resp) {
-    const data = await votesModel.subVotes(req.body.id_participations ,req.body.note_creativity, req.body.note_on_theme, req.body.note_technique)
+    const data = await votesModel.subVotes(req.user.id ,req.body.id_participations ,req.body.note_creativity, req.body.note_on_theme, req.body.note_technique)
     resp.json({
         success: true,
         message: `Votes bien ajouté.`

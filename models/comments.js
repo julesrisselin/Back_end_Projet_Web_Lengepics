@@ -5,17 +5,17 @@ export async function getAllComments() {
     return row;
 }
 
-export async function getCommentsById(Id) {
-    const row = db.getrow('SELECT * FROM comments WHERE id = ?', [Id])
+export async function getCommentsById(id) {
+    const row = db.getrow('SELECT * FROM comments WHERE id = ?', [id])
     return row;
 }
 
-export async function updateComments(content, Id){
-    const row = db.execute('UPDATE comments SET content = ? WHERE id = ?', [content, Id])
+export async function moderateComments(id){
+    const row = db.execute('UPDATE comments SET is_visible = 0 WHERE id = ?', [id])
     return row;
 }
 
-export async function subComments(id_participations ,content){
-    const row = db.execute('INSERT INTO comments (id_participations , content) VALUES (? ,?)' ,[id_participations ,content]);
+export async function subComments(id_participations ,user_id ,content){
+    const row = db.execute('INSERT INTO comments (id_participations, user_id  , content) VALUES (?, ? ,?)' ,[id_participations, user_id ,content]);
     return row;
 }
