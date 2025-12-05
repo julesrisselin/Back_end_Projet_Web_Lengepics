@@ -22,7 +22,7 @@ export async function getCurrentChallenge(req, resp) {
 
 
 export async function subChallenge(req, resp) {
-    const data = await challengeModel.subChallenge(req.body.title_theme, req.body.description_theme, req.body.picture, req.body.date_start, req.body.date_end)
+    const data = await challengeModel.subChallenge(req.body.title_theme, req.body.description_theme, req.file, req.body.date_start, req.body.date_end)
     resp.json({
         success: true,
         message : "Challenge ajouté ", 

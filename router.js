@@ -5,6 +5,7 @@ import * as votesController from "./controllers/votes.js";
 import * as commentsController from "./controllers/comments.js";
 import * as challengeController from "./controllers/challenge.js";
 import * as authentificationController from "./controllers/authentification.js";
+import * as uploadController from "./controllers/upload.js";
 const router = Router();
 
 /* Pour la connexion */
@@ -40,6 +41,6 @@ router.get("/votes", votesController.getAllVotes)
 router.get("/votes/:id", votesController.getVotesById)
  
 // Admin testé 
-router.post("/challenges",authentificationController.authByToken, authentificationController.authAdmin, challengeController.subChallenge);
+router.post("/challenges",authentificationController.authByToken, authentificationController.authAdmin, uploadController.upload.single('uploaded_file') , challengeController.subChallenge);
 
 export default router;
