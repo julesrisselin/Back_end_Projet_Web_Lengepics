@@ -10,12 +10,7 @@ export async function getCurrentChallenge(req, resp) {
     } else {
         resp.json({
             success: true,
-            data: {
-                id: data.id,
-                picture: data.picture,
-                date_start: data.date_start,
-                date_end: data.date_end,
-            },
+            data: {data:data},
         })
     }
 }
