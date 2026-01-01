@@ -10,6 +10,11 @@ export async function getParticipationById(id) {
     return row;
 }
 
+export async function getAllParticipation(){
+    const row = db.getall('SELECT * FROM participations')
+    return row;
+}
+
 export async function getParticipationByChallenge(id_challenge) {
     const row = db.getrow('SELECT * FROM participations WHERE id_challenge = ?', [id_challenge])
     return row;
