@@ -10,9 +10,6 @@ export async function getCurrentChallenge(req, resp) {
     } else {
         resp.json({
             success: true,
-<<<<<<< HEAD
-            data: {data:data},
-=======
             data: {
                 id: data.id,
                 title_theme : data.title_theme,
@@ -21,7 +18,6 @@ export async function getCurrentChallenge(req, resp) {
                 date_start: data.date_start,
                 date_end: data.date_end,
             },
->>>>>>> dev
         })
     }
 }
