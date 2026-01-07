@@ -32,7 +32,9 @@ export async function getParticipationById(req, resp) {
 
 export async function getParticipationByFilter(req, resp) {
     let result;
-    if (req.query.id_challenge) {
+    if (req.query == undefined) {
+        result = participationsModel.getAllParticipation()
+    } else if (req.query.id_challenge) {
         result = participationsModel.getParticipationByChallenge(req.query.id_challenge);
     } else if (req.query.date_submission) {
         result = participationsModel.getParticipationsByDate(req.query.date_submission);

@@ -10,7 +10,18 @@ export async function getCurrentChallenge(req, resp) {
     } else {
         resp.json({
             success: true,
+<<<<<<< HEAD
             data: {data:data},
+=======
+            data: {
+                id: data.id,
+                title_theme : data.title_theme,
+                description_theme : data.description_theme,
+                picture: data.picture,
+                date_start: data.date_start,
+                date_end: data.date_end,
+            },
+>>>>>>> dev
         })
     }
 }
