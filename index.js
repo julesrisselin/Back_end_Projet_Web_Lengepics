@@ -7,11 +7,8 @@ import * as errorcontroller from "./controllers/errorhandler.js";
 // Creation du serveur
 // Utilisation de la table de routage dans l’application
 const app = express();
-const corsOption = {
-    origin : "http://localhost:5173"
-}
-app.use(cors(corsOption));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use("/api", router);
 
