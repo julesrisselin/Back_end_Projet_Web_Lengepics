@@ -1,4 +1,4 @@
-import cors from "cors";
+import cors from 'cors';
 import express from "express";
 // Import de la table de routage
 import router from "./router.js";
@@ -8,6 +8,10 @@ import * as errorcontroller from "./controllers/errorhandler.js";
 // Utilisation de la table de routage dans l’application
 const app = express();
 app.use(express.json());
+const corsOption = {
+    origin : "http://localhost:5173"
+}
+app.use(cors(corsOption));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use("/api", router);
