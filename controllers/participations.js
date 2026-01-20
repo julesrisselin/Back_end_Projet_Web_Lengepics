@@ -31,9 +31,9 @@ export async function getParticipationById(req, resp) {
 }
 
 export async function getParticipationByFilter(req, resp) {
-    let result;
-    if (req.query == undefined) {
-        result = participationsModel.getAllParticipation()
+    let result = {} ;
+    if (!!req.query) {
+        result = await participationsModel.getAllParticipation()
     } else if (req.query.id_challenge) {
         result = participationsModel.getParticipationByChallenge(req.query.id_challenge);
     } else if (req.query.date_submission) {
@@ -42,15 +42,9 @@ export async function getParticipationByFilter(req, resp) {
         result = participationsModel.getParticipationByUserId(req.query.user_id);
     }
     const data = result;
+    console.log(data);
     resp.json({
-        data: {
-            id: data.id,
-            user_id: data.user_id,
-            id_challenge: data.id_challenge,
-            picture_update_url: data.picture_update_url,
-            date_submission: data.date_submission,
-            is_active: data.is_active,
-        }
+        data : data 
     });
 }
 
