@@ -32,7 +32,7 @@ export async function getParticipationById(req, resp) {
 
 export async function getParticipationByFilter(req, resp) {
     let result = {} ;
-    if (!!req.query) {
+    if (Object.keys(req.query).length == 0) {
         result = await participationsModel.getAllParticipation()
     } else if (req.query.id_challenge) {
         result = participationsModel.getParticipationByChallenge(req.query.id_challenge);
