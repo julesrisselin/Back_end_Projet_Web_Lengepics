@@ -32,17 +32,18 @@ export async function getParticipationById(req, resp) {
 
 export async function getParticipationByFilter(req, resp) {
     let result = {} ;
-    if (!!req.query) {
+    if (Object.keys(req.query).length == 0) {
         result = await participationsModel.getAllParticipation()
     } else if (req.query.id_challenge) {
-        result = participationsModel.getParticipationByChallenge(req.query.id_challenge);
+        const id = req.query.id_challenge.split("=");
+        result = await participationsModel.getParticipationByChallenge(id[1]);
+        console.log(result);
     } else if (req.query.date_submission) {
-        result = participationsModel.getParticipationsByDate(req.query.date_submission);
+        result = await participationsModel.getParticipationsByDate(req.query.date_submission);
     } else if (req.query.user_id) {
-        result = participationsModel.getParticipationByUserId(req.query.user_id);
+        result = await participationsModel.getParticipationByUserId(req.query.user_id);
     }
     const data = result;
-    console.log(data);
     resp.json({
         data : data 
     });
