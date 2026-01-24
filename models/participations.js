@@ -16,7 +16,7 @@ export async function getAllParticipation(){
 }
 
 export async function getParticipationByChallenge(id_challenge) {
-    const row = db.getrow('SELECT * FROM participations WHERE id_challenge = ?', [id_challenge])
+    const row = db.getall('SELECT * FROM participations WHERE id_challenge = ?', [id_challenge])
     return row;
 }
 
