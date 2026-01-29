@@ -8,33 +8,14 @@ export async function deleteParticipations(req, resp) {
     })
 }
 
-export async function getParticipationById(req, resp) {
-    const data = await participationsModel.getParticipationById(req.params.id)
-    if (data == undefined) {
-        resp.json({
-            success: false,
-            data: "Participations not find"
-        })
-    } else {
-        resp.json({
-            success: true,
-            data: {
-                id: data.id,
-                user_id: data.user_id,
-                id_challenge: data.id_challenge,
-                picture_update_url: data.picture_update_url,
-                date_submission: data.date_submission,
-                is_active: data.is_active,
-            }
-        });
-    }
-}
-
 export async function getParticipationByFilter(req, resp) {
     let result = {} ;
     if (req.query.id_challenge) {
-        const id = req.query.id_challenge.split("=");
-        result = await participationsModel.getParticipationByChallenge(id[1]);
+        const id_challenge = req.query.id_challenge.split("=");
+        result = await participationsModel.getParticipationByChallenge(id_challenge[1]);
+    } else if (req.query.id_participation) {
+        const id_participation = req.query.id_participation.split("=");
+        result = await participationsModel.getParticipationById(id_participation[1]);
     } else if (req.query.date_submission) {
         result = await participationsModel.getParticipationsByDate(req.query.date_submission);
     } else if (req.query.user_id) {

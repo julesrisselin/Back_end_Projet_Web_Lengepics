@@ -5,8 +5,8 @@ export async function delParticipations(id) {
     return row;
 }
 
-export async function getParticipationById(id) {
-    const row = db.getrow('SELECT * FROM participations WHERE id = ?', [id])
+export async function getParticipationById(id_participation) {
+    const row = db.getrow('SELECT * FROM participations WHERE id = ?', [id_participation])
     return row;
 }
 

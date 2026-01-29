@@ -25,7 +25,6 @@ router.post("/participations",authentificationController.authByToken, uploadCont
 
 //faire if pour les requetes de user et date et id challenge
 router.get("/participations", participationsController.getParticipationByFilter);
-router.get("/participations/:id", participationsController.getParticipationById);
 router.delete("/participations/:id",authentificationController.authByToken, authentificationController.authAdmin, participationsController.deleteParticipations);
 
 // Pour les commentaires
