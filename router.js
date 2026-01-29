@@ -15,7 +15,7 @@ router.post("/auth/login", authentificationController.authentificationUser);
 router.get("/users/me", authentificationController.authByToken, userController.getCurrent)
 router.post("/users", userController.createUser)
 router.put("/users/:id",authentificationController.authByToken, userController.updateUserInfos);
-router.get("/users/:id", userController.getUserById);
+router.get("/users", userController.getUserById);
 
 //Pour le challenge en cours
 router.get("/challenges/current", challengeController.getCurrentChallenge);

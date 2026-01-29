@@ -1,7 +1,7 @@
 import db from "../database.js";
 
-export async function getUser(id){
-    const row  = await db.getrow('SELECT id ,email , name , firstname, date_inscription, is_admin FROM users WHERE Id = ?', [id])
+export async function getUser(user_id){
+    const row  = await db.getrow('SELECT id ,email , name , firstname, date_inscription, is_admin FROM users WHERE Id = ?', [user_id])
     return row;
 }
 
