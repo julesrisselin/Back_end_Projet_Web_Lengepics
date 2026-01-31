@@ -31,7 +31,7 @@ export async function getParticipationByFilter(req, resp) {
 
 export async function subParticipations(req, resp) {
     const filepath = req.file.path.substr(6);
-    const data = await participationsModel.subParticipations(req.user.id ,req.body.id_challenge, filepath)
+    const data = await participationsModel.subParticipations(req.body.user_id ,req.body.id_challenge, filepath)
     resp.json({
         success: true,
         message: `Participations bien ajouté.`
