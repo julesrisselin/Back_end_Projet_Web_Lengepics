@@ -8,7 +8,8 @@ export async function getAllVotes(req, resp) {
 }
 
 export async function getVotesById(req, resp) {
-    const data = await votesModel.getVotesById(req.params.id);
+    const id_part = req.params.id.split("=");
+    const data = await votesModel.getVotesById(id_part[1]);
     if (data == undefined) {
         resp.json({
             sucess: false,

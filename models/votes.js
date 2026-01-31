@@ -5,8 +5,8 @@ export async function getAllVotes() {
     return row;
 }
 
-export async function getVotesById(id) {
-    const row = db.getrow('SELECT * FROM votes WHERE id = ?', [id])
+export async function getVotesById(id_part) {
+    const row = db.getall('SELECT * FROM votes WHERE id_participations = ?', [id_part])
     return row;
 }
 

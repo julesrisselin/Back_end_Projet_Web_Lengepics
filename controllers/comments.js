@@ -1,6 +1,7 @@
 import * as commentsModel from "../models/comments.js";
 
 export async function getAllComments(req, resp){
+    console.log("test1")
     const data = await commentsModel.getAllComments();
     resp.json({
         data : data,
@@ -8,7 +9,10 @@ export async function getAllComments(req, resp){
 }
 
 export async function getCommentsById(req , resp) {
-    const data = await commentsModel.getCommentsById(req.params.id);
+    console.log(req.params.id)
+    const id_part = req.params.id.split("=");
+    const data = await commentsModel.getCommentsById(id_part[1]);
+    //console.log(data);
     if (data == undefined){
         resp.json({
             sucess: false,
@@ -16,13 +20,7 @@ export async function getCommentsById(req , resp) {
         })
     } else {
     resp.json({
-        data: {
-            id_participations: data.id_participations,
-            user_id: data.user_id,
-            content: data.content,
-            date_comments: data.date_comments,
-            is_visible: data.is_visible,
-        },
+        data: data
       })
     }
 }
