@@ -2,7 +2,6 @@ import * as userModel from "../models/user.js";
 import bcrypt from 'bcrypt';
 
 export async function getUserById(req, resp) {
-  console.log("test");
   if (req.query.user_id == undefined || req.query.user_id == null) {
     resp.json({
       sucess: false,

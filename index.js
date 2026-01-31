@@ -9,7 +9,8 @@ import * as errorcontroller from "./controllers/errorhandler.js";
 const app = express();
 app.use(express.json());
 const corsOption = {
-    origin : "http://localhost:5173"
+    origin : "http://localhost:5173",
+    credentials: true
 }
 app.use(cors(corsOption));
 app.use(express.urlencoded({ extended: true }));
