@@ -21,12 +21,12 @@ export async function getParticipationByChallenge(id_challenge) {
 }
 
 export async function getParticipationByUserId(user_id) {
-    const row = db.getrow('SELECT * FROM participations WHERE user_id = ?', [user_id])
+    const row = db.getall('SELECT * FROM participations WHERE user_id = ?', [user_id])
     return row;
 }
 
 export async function getParticipationsByDate(date_submission) {
-    const row = db.getrow('SELECT * FROM participations WHERE date_submission = ?', [date_submission])
+    const row = db.getall('SELECT * FROM participations WHERE date_submission = ?', [date_submission])
     return row;
 }
 
