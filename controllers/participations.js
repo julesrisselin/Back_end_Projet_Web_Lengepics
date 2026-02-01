@@ -17,9 +17,11 @@ export async function getParticipationByFilter(req, resp) {
         const id_participation = req.query.id_participation.split("=");
         result = await participationsModel.getParticipationById(id_participation[1]);
     } else if (req.query.date_submission) {
-        result = await participationsModel.getParticipationsByDate(req.query.date_submission);
+        const date_submission = req.query.date_submission.split("=");
+        result = await participationsModel.getParticipationsByDate(date_submission[1]);
     } else if (req.query.user_id) {
-        result = await participationsModel.getParticipationByUserId(req.query.user_id);
+        const user_id = req.query.user_id.split("=");
+        result = await participationsModel.getParticipationByUserId(user_id[1]);
     } else {
         result = await participationsModel.getAllParticipation()
     }
