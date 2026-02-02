@@ -10,6 +10,7 @@ const router = Router();
 
 /* Pour la connexion */
 router.post("/auth/login", authentificationController.authentificationUser);
+router.get("/auth/logout", authentificationController.logOutUser);
 
 
 router.get("/users/me", authentificationController.authByToken, userController.getCurrent)

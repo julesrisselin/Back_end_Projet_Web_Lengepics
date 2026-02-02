@@ -43,6 +43,14 @@ export async function authByToken(req, resp, next) {
     }
 }
 
+export async function logOutUser(req, resp) {
+    console.log(req.cookies.token);
+    resp.clearCookie('Token');
+    resp.json({
+        message: "Le token a bien été supprimé"
+    })
+}
+
 export async function authAdmin(req, resp, next) {
     if (req.user == undefined) {
         resp.status(401).json({
