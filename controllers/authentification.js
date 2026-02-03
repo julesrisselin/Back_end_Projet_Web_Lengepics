@@ -45,7 +45,7 @@ export async function authByToken(req, resp, next) {
 
 export async function logOutUser(req, resp) {
     console.log(req.cookies.token);
-    resp.clearCookie('Token');
+    resp.clearCookie('token');
     resp.json({
         message: "Le token a bien été supprimé"
     })
