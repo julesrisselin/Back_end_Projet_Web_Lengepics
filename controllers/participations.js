@@ -14,8 +14,7 @@ export async function getParticipationByFilter(req, resp) {
         const id_challenge = req.query.id_challenge.split("=");
         result = await participationsModel.getParticipationByChallenge(id_challenge[1]);
     } else if (req.query.id_participation) {
-        const id_participation = req.query.id_participation.split("=");
-        result = await participationsModel.getParticipationById(id_participation[1]);
+        result = await participationsModel.getParticipationById(req.query.id_participation);
     } else if (req.query.date_submission) {
         const date_submission = req.query.date_submission.split("=");
         result = await participationsModel.getParticipationsByDate(date_submission[1]);

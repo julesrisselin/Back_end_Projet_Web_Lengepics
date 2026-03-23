@@ -29,13 +29,12 @@ router.get("/participations", participationsController.getParticipationByFilter)
 
 // Pour les commentaires
 router.post("/comments", authentificationController.authByToken, commentsController.subComments);
-router.get("/comments/:id", commentsController.getCommentsByIdPart);
-router.get("/comments", commentsController.getCommentsbyUserId);
+router.get("/comments", commentsController.getCommentsByFilter);
 router.put("/comments", authentificationController.authByToken, authentificationController.authAdmin,commentsController.moderateComments);
 
 // Pour les votes
 router.post("/votes",authentificationController.authByToken, votesController.subVotes);
-router.get("/votes/:id", votesController.getVotesById)
+router.get("/votes", votesController.getVotesByFilter)
  
 // Admin testé 
 router.post("/challenges",authentificationController.authByToken, authentificationController.authAdmin, uploadController.upload.single('uploaded_file') , challengeController.subChallenge);

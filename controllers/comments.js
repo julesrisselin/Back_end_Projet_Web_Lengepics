@@ -39,6 +39,22 @@ export async function getCommentsbyUserId(req , resp) {
     }
 }
 
+
+export async function getCommentsByFilter(req, resp) {
+    let result = {} ;
+    if (req.query.id_participation) {
+        result = await commentsModel.getCommentsByIdPart(req.query.id_participation);
+    } else if (req.query.user_id) {
+        result = await commentsModel.getCommentsbyUserId(req.query.user_id);
+    } else {
+        result = await commentsModel.getAllComments()
+    }
+    const data = result;
+    resp.json({
+        data : data 
+    });
+}
+
 export async function moderateComments(req, resp) {
     const data = await commentsModel.moderateComments(req.body.is_visible, req.body.id)
     resp.json({

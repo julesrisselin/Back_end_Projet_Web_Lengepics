@@ -7,10 +7,15 @@ export async function getAllVotes(req, resp) {
     });
 }
 
-export async function getVotesById(req, resp) {
-    const id_part = req.params.id.split("=");
-    const data = await votesModel.getVotesById(id_part[1]);
-    if (data == undefined) {
+export async function getVotesByFilter(req, resp) {
+    let data = {};
+    if (req.query.id_participation){
+        data = await votesModel.getVotesByIdParticipations(req.query.id_participation);
+    } else if (req.query.user_id){
+        data = await votesModel.getVotesByUserId(req.query.user_id);
+    } else {
+        data = await votesModel.getAllVotes();
+    } if (data == undefined) {
         resp.json({
             sucess: false,
             data: "Votes non trouvé"
