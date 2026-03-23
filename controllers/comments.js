@@ -23,6 +23,22 @@ export async function getCommentsByIdPart(req , resp) {
     }
 }
 
+export async function getCommentsbyUserId(req , resp) {
+    console.log(req.params);
+    const user_id = req.params.user_id.split("=");
+    const data = await commentsModel.getCommentsByIdPart(user_id[1]);
+    if (data == undefined){
+        resp.json({
+            sucess: false,
+            data: "Comment not found",
+        })
+    } else {
+    resp.json({
+        data: data
+      })
+    }
+}
+
 export async function moderateComments(req, resp) {
     const data = await commentsModel.moderateComments(req.body.is_visible, req.body.id)
     resp.json({

@@ -30,6 +30,7 @@ router.get("/participations", participationsController.getParticipationByFilter)
 // Pour les commentaires
 router.post("/comments", authentificationController.authByToken, commentsController.subComments);
 router.get("/comments/:id", commentsController.getCommentsByIdPart);
+router.get("/comments", commentsController.getCommentsbyUserId);
 router.put("/comments", authentificationController.authByToken, authentificationController.authAdmin,commentsController.moderateComments);
 
 // Pour les votes

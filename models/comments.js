@@ -10,6 +10,11 @@ export async function getCommentsByIdPart(id_part) {
     return row;
 }
 
+export async function getCommentsbyUserId(user_id) {
+    const row = db.getall('SELECT * FROM comments WHERE user_id = ?', [user_id])
+    return row;
+}
+
 export async function moderateComments(is_visible , id){
     const row = db.execute('UPDATE comments SET is_visible = ? WHERE id = ?', [is_visible , id])
     return row;
