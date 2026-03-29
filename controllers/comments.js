@@ -65,6 +65,7 @@ export async function moderateComments(req, resp) {
 
 export async function subComments(req , resp){
     const data = await commentsModel.subComments(req.body.id_participations, req.user.id ,req.body.content)
+    console.log(data);
     resp.json ({
         success: true,
         message: `Votre commentaire a bien ajouté.`

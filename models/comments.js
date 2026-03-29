@@ -1,7 +1,8 @@
 import db from "../database.js";
 
 export async function getAllComments() {
-    const row = db.getall('SELECT * FROM comments',)
+    const row = db.getall('SELECT * FROM comments ORDER BY date_comments DESC')
+    console.log(row)
     return row;
 }
 

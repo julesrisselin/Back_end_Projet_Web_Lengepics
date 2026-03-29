@@ -11,16 +11,13 @@ export async function deleteParticipations(req, resp) {
 export async function getParticipationByFilter(req, resp) {
     let result = {};
     if (req.query.id_challenge) {
-        const id_challenge = req.query.id_challenge.split("=");
-        result = await participationsModel.getParticipationByChallenge(id_challenge[1]);
+        result = await participationsModel.getParticipationByChallenge(req.query.id_challenge);
     } else if (req.query.id_participation) {
         result = await participationsModel.getParticipationById(req.query.id_participation);
     } else if (req.query.date_submission) {
-        const date_submission = req.query.date_submission.split("=");
-        result = await participationsModel.getParticipationsByDate(date_submission[1]);
+        result = await participationsModel.getParticipationsByDate(req.query.date_submission);
     } else if (req.query.user_id) {
-        const user_id = req.query.user_id.split("=");
-        result = await participationsModel.getParticipationByUserId(user_id[1]);
+        result = await participationsModel.getParticipationByUserId(req.query.user_id);
     } else {
         result = await participationsModel.getAllParticipation()
     }

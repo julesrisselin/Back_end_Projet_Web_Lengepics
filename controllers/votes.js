@@ -29,10 +29,18 @@ export async function getVotesByFilter(req, resp) {
 
 export async function subVotes(req, resp) {
     const data = await votesModel.subVotes(req.body.id_participations, req.body.user_id ,req.body.note_creativity, req.body.note_on_theme, req.body.note_technique)
+    if (data == undefined || null){
+        resp.json({
+            success: false,
+            message: `Vous avez déjà voté pour cette participation`
+        })
+    } else {
     resp.json({
         success: true,
         message: `Votes bien ajouté.`
     })
+}
+
 }
 
 
