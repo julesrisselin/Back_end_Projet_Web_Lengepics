@@ -1,7 +1,8 @@
 import multer from 'multer';
+import path from 'path';
 
 const storage = multer.diskStorage({
-    destination: './public/upload/',
+    destination: path.join(__dirname, '..', 'public', 'upload'),
     filename: function (req, file, cb) {
         const name_file = file.originalname.split(".")[0];
         cb(null, name_file + '.' + file.originalname.split(".")[1])
