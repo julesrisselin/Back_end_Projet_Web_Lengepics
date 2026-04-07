@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import * as errorcontroller from "./controllers/errorhandler.js";
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' with { type: "json"};
+import path from 'path'
 // Creation du serveur
 // Utilisation de la table de routage dans l’application
 const app = express();
@@ -22,7 +23,13 @@ app.use("/api", router);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //on redirige le / vers public
-app.use("/", express.static("public"))
+app.use(express.static("public"))
+
+ 
+app.get('/', (req, res) => {
+  res.sendFile('index.html', {root: path.join(__dirname, 'public')})
+})
+
 
 app.use(errorcontroller.errorHandler);
 // Demarrage du serveur sur le port 3000
