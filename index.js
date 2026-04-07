@@ -34,3 +34,5 @@ app.get('/', (req, res) => {
 app.use(errorcontroller.errorHandler);
 // Demarrage du serveur sur le port 3000
 app.listen(process.env.PORT);
+
+export default app;
