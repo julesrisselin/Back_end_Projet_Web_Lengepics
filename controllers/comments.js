@@ -64,8 +64,23 @@ export async function moderateComments(req, resp) {
 }
 
 export async function subComments(req , resp){
+    if (req.body.content == ""){
+        resp.json({
+            success: false,
+            message: `Le commentaire est vide`
+        })
+        return ;
+    }
+    try {
     const data = await commentsModel.subComments(req.body.id_participations, req.user.id ,req.body.content)
-    console.log(data);
+    }catch (error) {
+        resp.json({
+            success: false,
+            message: `Vous avez déjà poster un commentaire`
+        });
+
+        return;
+    }
     resp.json ({
         success: true,
         message: `Votre commentaire a bien ajouté.`

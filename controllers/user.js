@@ -66,7 +66,6 @@ export async function updateFirstConnexion(req, resp) {
 }
 
 export async function createUser(req, resp) {
-  console.log(req.body.password)
   const password = await bcrypt.hash(req.body.password, 10);
   const data = await userModel.createUser(req.body.email, password, req.body.name, req.body.firstname)
   const token = jwt.sign({ id: data }, process.env.SECRET_KEY, { expiresIn: "1h" });

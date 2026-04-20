@@ -31,7 +31,7 @@ export async function subParticipations(req, resp) {
     if (req.file == undefined) {
         resp.json({
             success: false,
-            message: "Mauvais format pour l'upload ",
+            message: "Veuillez ajoutez un fichier",
         })
     }
     const filepath = req.file.path.substr(6);

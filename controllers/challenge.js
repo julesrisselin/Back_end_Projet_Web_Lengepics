@@ -5,7 +5,7 @@ export async function getCurrentChallenge(req, resp) {
     if (data == undefined) {
         resp.json({
             success: false,
-            data: "There are no challenges at the moment.",
+            data: "Pas de challenge en ce moment.",
         })
     } else {
         resp.json({
