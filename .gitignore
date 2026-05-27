@@ -1,3 +1,6 @@
+.vscode
+public/upload/*
+
 # Logs
 logs
 *.log
