@@ -17,7 +17,8 @@ CREATE TABLE users (
   name             VARCHAR(127),
   firstname        VARCHAR(127),
   is_admin         BOOLEAN DEFAULT FALSE,
-  date_inscription DATETIME DEFAULT NOW()
+  date_inscription DATETIME DEFAULT NOW(),
+  validation       BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE participations (
